@@ -1,4 +1,4 @@
-#Detailed Design Document
+# Detailed Design Document
 
 
 ## Phase 0 — Requirements & Planning
