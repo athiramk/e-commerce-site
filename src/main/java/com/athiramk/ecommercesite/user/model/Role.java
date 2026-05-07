@@ -1,8 +1,12 @@
 package com.athiramk.ecommercesite.user.model;
 
 
+import com.athiramk.ecommercesite.user.enums.UserRole;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,8 +24,9 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
-	private String name;
+	@Enumerated(EnumType.STRING)   // ← store as string in DB
+    @Column(nullable = false)
+    private UserRole name;
 
 	public Long getId() {
 		return id;
@@ -31,11 +36,11 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getName() {
+	public UserRole getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(UserRole name) {
 		this.name = name;
 	}
 	
