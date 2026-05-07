@@ -11,28 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-/**
- * CREATE TABLE addresses (
-    id              BIGSERIAL       NOT NULL,
-    user_id         BIGINT          NOT NULL,
-    address_line1   VARCHAR(255)    NOT NULL,
-    address_line2   VARCHAR(255),
-    city            VARCHAR(100)    NOT NULL,
-    state           VARCHAR(100)    NOT NULL,
-    postal_code     VARCHAR(20)     NOT NULL,
-    country         VARCHAR(100)    NOT NULL    DEFAULT 'Australia',
-    is_default      BOOLEAN         NOT NULL    DEFAULT FALSE,
-
-    CONSTRAINT pk_addresses PRIMARY KEY (id),
-
-    CONSTRAINT fk_addresses_user
-        FOREIGN KEY (user_id) REFERENCES users (id)
-        ON DELETE CASCADE
-);
-
-CREATE INDEX idx_addresses_user_id ON addresses (user_id);
- */
-
 @Entity
 @Table(name = "addresses", indexes = {
 		@Index(name = "idx_addresses_user_id", columnList = "user_id")
@@ -70,5 +48,79 @@ public class Address {
 	
 	@Column(name ="is_default", nullable = false)
 	private boolean isDefault = false;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getAddressLine1() {
+		return addressLine1;
+	}
+
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
+	}
+	
+	
 
 }
